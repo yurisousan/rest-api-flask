@@ -54,3 +54,10 @@ flake8 . --exclude .venv
 ```
 
 Now remove the infos that it return to solve, and push again to repository.
+
+# Extensions
+[FlaskMongoEngine Doc](http://docs.mongoengine.org/projects/flask-mongoengine/en/latest/)
+
+```bash
+sudo pip install flask-mongoengine
+```
