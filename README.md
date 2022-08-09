@@ -40,3 +40,17 @@ python app.py # to restful
 ```
 
 ## Tests
+[Reffer Documentation](https://peps.python.org/pep-0008/)
+
+Install the lib
+```bash
+sudp pip install flake8
+```
+
+Using
+
+```bash
+flake8 . --exclude .venv
+```
+
+Now remove the infos that it return to solve, and push again to repository.
