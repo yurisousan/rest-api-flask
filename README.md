@@ -17,8 +17,10 @@ source .venv/bin/activate
 ```
 
 ### Install packages
+[FlaskMongoEngine Doc](http://docs.mongoengine.org/projects/flask-mongoengine/en/latest/)
+
 ```bash
-pip install flask flask-restful
+pip install flask flask-restful flask-mongoengine
 ```
 
 Verify libs from ```venv```
@@ -55,9 +57,21 @@ flake8 . --exclude .venv
 
 Now remove the infos that it return to solve, and push again to repository.
 
-# Extensions
-[FlaskMongoEngine Doc](http://docs.mongoengine.org/projects/flask-mongoengine/en/latest/)
+
+
+# TShoot
+Access the mongodb container
 
 ```bash
-sudo pip install flask-mongoengine
+docker exec -it id-container sh
+
+mongo -u admin
+
+> show dbs
+
+> use admin
+
+> show collections
+
+> exit
 ```
