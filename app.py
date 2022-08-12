@@ -4,8 +4,6 @@ from flask_mongoengine import MongoEngine
 
 
 app = Flask(__name__)
-api = Api(app)
-db = MongoEngine(app)
 
 
 app.config["MONGODB_SETTINGS"] = [
@@ -13,10 +11,14 @@ app.config["MONGODB_SETTINGS"] = [
       "db": "users",
       "host": "mongodb",
       "port": 27017,
-      "user": "admin",
+      "username": "admin",
       "password": "admin",
     }
 ]
+
+
+api = Api(app)
+db = MongoEngine(app)
 
 
 class UserModel(db.Document):
@@ -29,6 +31,7 @@ class UserModel(db.Document):
 
 class Users(Resource):
     def get(self):
+        # return jsonify(UserModel.objects())
         return {"message": "user 1"}
 
 
