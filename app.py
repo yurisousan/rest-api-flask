@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_restful import reqparse, Resource, Api
 from flask_mongoengine import MongoEngine
+from mongoengine import NotUniqueError
 import re
 
 
@@ -100,8 +101,11 @@ class User(Resource):
 
         if not self.validate_cpf(data["cpf"]):
             return {"message": "CPF is invalid!"}, 400
-        response = UserModel(**data).save()
-        return {"message": "User %s successfully created" % response.id}
+        try:        
+            response = UserModel(**data).save()
+            return {"message": "User %s successfully created" % response.id}
+        except NotUniqueError:
+            return {"message": "CPF already exist!"}, 400
 
     def get(self, cpf):
         return {"message": "CPF"}
@@ -111,4 +115,4 @@ api.add_resource(Users, '/users')
 api.add_resource(User, '/user', '/user/<string:cpf>')
 
 if __name__ == '__main__':
-    app.run(debug=False, host="0.0.0.0")
+    app.run(debug=True, host="0.0.0.0")
