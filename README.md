@@ -1,5 +1,4 @@
 # rest-api-flask
-
 # Requirements
 ```bash
 sudo apt install python3-pip python3-virtualenv python3-venv
